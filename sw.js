@@ -1,4 +1,4 @@
-const CACHE='rhino-hub-app-v1';
+const CACHE='rhino-hub-app-v2';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS))));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(key=>key.startsWith('rhino-hub-app-')&&key!==CACHE).map(key=>caches.delete(key)));await self.clients.claim()})()));
